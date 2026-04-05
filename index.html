@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Budget Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="header-label">Personal Finance</div>
+    <h1>Budget Tracker</h1>
+    <div class="month-tag" id="monthTag">—</div>
+  </header>
+
+  <div class="summary">
+    <div class="card">
+      <div class="card-label">Income</div>
+      <div class="card-amount income" id="totalIncome">₹0.00</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Expenses</div>
+      <div class="card-amount expense" id="totalExpense">₹0.00</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Balance</div>
+      <div class="card-amount balance" id="totalBalance">₹0.00</div>
+    </div>
+  </div>
+
+  <div class="bar-wrap">
+    <div class="bar-label">
+      <span>Expense Ratio</span>
+      <span id="ratioText">0% of income spent</span>
+    </div>
+    <div class="bar-track">
+      <div class="bar-fill" id="barFill" style="width:0%"></div>
+    </div>
+  </div>
+
+  <div class="mid-row">
+
+    <div class="chart-section" id="chartSection" style="display:none">
+      <div class="section-title">Spending Breakdown</div>
+      <div class="chart-wrap">
+        <canvas id="pieChart"></canvas>
+      </div>
+      <div class="chart-legend" id="chartLegend"></div>
+    </div>
+
+    <div class="form-section">
+      <div class="section-title">Add Transaction</div>
+      <div class="form-row three">
+        <input type="text"   id="txName"     placeholder="Description" />
+        <input type="number" id="txAmount"   placeholder="Amount" min="0" />
+        <select id="txType">
+          <option value="expense">Expense</option>
+          <option value="income">Income</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <select id="txCategory">
+          <option value="Food">Food</option>
+          <option value="Transport">Transport</option>
+          <option value="Shopping">Shopping</option>
+          <option value="Bills">Bills</option>
+          <option value="Health">Health</option>
+          <option value="Entertainment">Entertainment</option>
+          <option value="Salary">Salary</option>
+          <option value="Freelance">Freelance</option>
+          <option value="Other">Other</option>
+        </select>
+        <input type="date" id="txDate" />
+      </div>
+      <button class="btn-add" id="btnAdd">+ Add Entry</button>
+    </div>
+
+  </div>
+
+  <div class="list-header">
+    <div class="list-title">Transactions</div>
+    <button class="clear-btn" id="btnClear">clear all</button>
+  </div>
+
+  <div class="tx-list" id="txList">
+    <div class="empty" id="emptyMsg">No transactions yet.</div>
+  </div>
+
+  <div class="breakdown" id="breakdown" style="display:none">
+    <div class="section-title">Expenses by Category</div>
+    <div id="catList"></div>
+  </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
